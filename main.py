@@ -14,12 +14,15 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-# Get bot token from environment variable
-BOT_TOKEN = os.getenv('BOT_TOKEN')
+# Bot token - Replace with your actual token from @BotFather
+BOT_TOKEN = "7930306003:AAGjq3KMGfJiSsA5N3irttWYHHvuS2plQXM"
 
-if not BOT_TOKEN:
-    logger.error("BOT_TOKEN environment variable not set!")
-    exit(1)
+# Fallback to environment variable if token not set in code
+if BOT_TOKEN == "YOUR_BOT_TOKEN_HERE_REPLACE_THIS":
+    BOT_TOKEN = os.getenv('BOT_TOKEN')
+    if not BOT_TOKEN:
+        logger.error("Please set your bot token either in code or environment variable!")
+        exit(1)
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     """Send a message when the command /start is issued."""
